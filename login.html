@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="icon" type="image/x-icon" href="src/icon.ico">
+</head>
+
+<body>
+
+<div id="login_div" class="main-div">
+    <h3>Enter to admin panel</h3>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+
+    <button onclick="login()">Login</button>
+    <br>
+    <a class="full2 mt-3" href="index.html">
+        <button id="back" type="submit" class="button-28">Back</button>
+    </a>
+</div>
+
+<div id="user_div" class="loggedin-div">
+    <h3>Welcome to admin panel</h3>
+    <div id="contactForm mt-3">
+        <a class="full1 mt-3" href="requests_table.html">
+            <button id="studentbutton" type="submit" class="button-28">User requests</button>
+        </a>
+    </div>
+    <br>
+    <button onclick="logout()">Exit</button>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAPYONE1xV5W2Ma9x9zvt4tkvnJvNHkleg",
+        authDomain: "saqagroup-7d3cc.firebaseapp.com",
+        projectId: "saqagroup-7d3cc",
+        storageBucket: "saqagroup-7d3cc.appspot.com",
+        messagingSenderId: "781565427876",
+        appId: "1:781565427876:web:06b47d2812ce9ea9986631",
+        measurementId: "G-NBTKEGJVVF"
+    };
+    firebase.initializeApp(config);
+</script>
+<script src="js/login.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Requests</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+    <link rel="stylesheet" href="css/requests_table.css">
+    <link rel="icon" type="image/x-icon" href="src/icon.ico">
+</head>
+
+<body>
+<div class="container">
+    <h1 class="brand mt-3">User requests</h1>
+
+    <div style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-end">
+        <a class="full1 mt-3" href="login.html">
+            <button type="submit" class="button-28">Exit</button>
+        </a>
+    </div>
+
+    <div class="input-group mb-3 mt-3">
+        <input id="SearchBar" type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <select class="custom-select" id="CategorySelected">
+                <option selected value="1">First Name</option>
+                <option value="2">Last Name</option>
+                <option value="3">Gender</option>
+                <option value="4">Phone Number</option>
+                <option value="5">Date of Birth</option>
+            </select>
+            <button id="SearchBtn" class="btn btn-outline-secondary ml-1" type="button" id="button-addon2">Search</button>
+        </div>
+    </div>
+
+</div>
+<div class="container w-75">
+    <table class="table table-bordered">
+        <thead>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Phone Number</th>
+        <th>Date of birth</th>
+        <th>Idea</th>
+        </thead>
+
+        <tbody id="tbody1">
+
+        </tbody>
+    </table>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<script id="MainScript">
+    var firebaseConfig = {
+        apiKey: "AIzaSyAPYONE1xV5W2Ma9x9zvt4tkvnJvNHkleg",
+        authDomain: "saqagroup-7d3cc.firebaseapp.com",
+        projectId: "saqagroup-7d3cc",
+        storageBucket: "saqagroup-7d3cc.appspot.com",
+        messagingSenderId: "781565427876",
+        appId: "1:781565427876:web:06b47d2812ce9ea9986631",
+        measurementId: "G-NBTKEGJVVF"
+    };
+
+    //Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var db = firebase.firestore();
+
+    function GetAllDataOnce() {
+        db.collection("requests").get().then((querySnapshot) => {
+            var students = [];
+            querySnapshot.forEach(doc => {
+                students.push(doc.data());
+            });
+        });
+    }
+
+    function GetAllDataRealtime() {
+        db.collection("requests").onSnapshot((querySnapshot) => {
+            var students = [];
+            querySnapshot.forEach(doc => {
+                students.push(doc.data());
+            });
+            AddAllItemsToTheTable(students)
+        });
+    }
+
+    var stdNo = 0;
+    var tbody = document.getElementById('tbody1');
+
+    function AddItemToTable(fname, lname, gender, phone, birthday, about) {
+        var trow = document.createElement('tr');
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var td4 = document.createElement('td');
+        var td5 = document.createElement('td');
+        var td6 = document.createElement('td');
+        var td7 = document.createElement('td');
+
+        td1.innerHTML = ++stdNo;
+        td2.innerHTML = fname;
+        td3.innerHTML = lname;
+        td4.innerHTML = gender;
+        td5.innerHTML = phone;
+        td6.innerHTML = birthday;
+        td7.innerHTML = about;
+
+
+        td2.classList += "firstNameField"
+        td3.classList += "lastNameField"
+        td4.classList += "genderField"
+        td5.classList += "phoneNumberField"
+        td6.classList += "birthdayField"
+        td7.classList += "aboutField"
+
+        trow.appendChild(td1);
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+        trow.appendChild(td6);
+        trow.appendChild(td7);
+
+        tbody.appendChild(trow);
+    }
+
+    function AddAllItemsToTheTable(StudentDocsList) {
+        stdNo = 0;
+        tbody.innerHTML = "";
+        StudentDocsList.forEach(element => {
+            AddItemToTable(element.FirstName, element.LastName, element.Gender, element.Phone, element.Birthday, element.About);
+        });
+    }
+
+    var searchBar = document.getElementById("SearchBar");
+    var searchBtn = document.getElementById("SearchBtn");
+    var category = document.getElementById("CategorySelected");
+    var tbody = document.getElementById("tbody1");
+
+    function SearchTable(Сategory) {
+        var filter = searchBar.value.toUpperCase();
+        var tr = tbody.getElementsByTagName("tr");
+        var found;
+
+        for (var i = 0; i < tr.length; i++) {
+            var td = tr[i].getElementsByClassName(Сategory);
+
+            for (var j = 0; j < td.length; j++) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) { //indexOf(filter) > -1
+                    found = true;
+                }
+            }
+
+            if (found) {
+                tr[i].style.display = "";
+                found = false;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+    searchBtn.onclick = function() {
+        if (searchBar.value == "")
+            SearchTable("firstNameField");
+
+        else if (category.value == 1)
+            SearchTable("firstNameField");
+
+        else if (category.value == 2)
+            SearchTable("lastNameField");
+
+        else if (category.value == 3)
+            SearchTable("genderField");
+
+        else if (category.value == 4)
+            SearchTable("phoneNumberField");
+
+        else if (category.value == 5)
+            SearchTable("birthdayField");
+
+        else if (category.value == 6)
+            SearchTable("aboutField");
+
+
+    }
+
+    searchBar.onkeypress = function(event) {
+        if (event.keyCode == 13) {
+            searchBtn.click();
+        }
+    }
+
+    window.onload = GetAllDataRealtime;
+</script>
+</body>
+
+</html>
