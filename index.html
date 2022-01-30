@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="src/icon.ico">
+    <title>SAQA Group</title>
+</head>
+
+<body>
+    <ul class="nav nav-justified">
+        <li class="nav-item"><a class="active" href="index.html">SAQA GROUP</a></li>
+        <li class="nav-item" style="float:right"><a class="active" href="login.html">Login</a></li>
+        <li class="nav-item" style="float:right"><a class="active" href="about_us.html">About us</a></li>
+        <li class="nav-item" style="float:right"><a class="active" href="our_projects.html">Our projects</a></li>
+    </ul>
+
+    <div class="row">
+        <div class="col-sm-6" style="padding: 10% 10%">
+            <h1 id="AreYou">Are you ready to change your life?</h1>
+            <h2 id="AreYou2" style="color: #111111">We can help you</h2>
+        </div>
+        <div class="col-sm-6" style="text-align: center">
+            <img class="mx-auto d-block" src="src/rocket.svg" alt="Rocket" width="600" height="600">
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="OurService">
+            <hr>
+            <p>Our company provides various services<br>
+                for the implementation of large projects</p>
+            <hr>
+        </div>
+    </div>
+
+    <div class="ImageWithText">
+        <div class="ImgTxt">
+            <img src="src/work.jpg" alt="Work" style="width:100%; filter: brightness(35%);">
+            <div class="centered"><h2>Our team provides services for the
+                implementation and development
+                of various projects</h2></div>
+        </div>
+    </div>
+
+    <div class="ShareIdea">
+        <h1 id="ShareIdea">Share your idea</h1>
+
+        <div class="container">
+            <div class="wrapper">
+                <div class="company-info">
+                    <h3 style="text-align: center">Here you must fill
+                        out a form about
+                        yourself and your project.
+                        Later, our specialists
+                        will contact you</h3>
+                </div>
+                <div class="contact">
+                    <h3 style="color: #111111">Form</h3>
+                    <div class="alert">You are already in database</div>
+                    <form id="contactForm">
+                        <p>
+                            <label style="color: #111111">First Name</label>
+                            <input type="text" name="firstname" id="fname" required>
+                        </p>
+                        <p>
+                            <label style="color: #111111">Last Name</label>
+                            <input type="text" name="lastname" id="lname" required>
+                        </p>
+                        <p>
+                            <label style="color: #111111">Gender</label>
+                            <select id="gender" name="gender" style="border: 1px solid #D86161;">
+                                <option value = "Male"> Мужской</option>
+                                <option value = "Female"> Женский</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label style="color: #111111">Phone Number</label>
+                            <input type="text" name="numberphone" id="phone" required>
+                        </p>
+                        <p>
+                            <label style="color: #111111">Date of Birth</label>
+                            <input type="date" id="birthday" name="birthday" value="2010-07-22" min="1900-01-01" max="2050-12-31" style="border: 1px solid #D86161;" required>
+                        </p>
+                        <p>
+                            <label style="color: #111111">About project</label>
+                            <input type="text" name="about" id="about" required>
+                        </p>
+                        <p class="full">
+                            <button type="submit" class="button-28" id="submit" style="color: #ffffff">Send</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="OurTeam">
+        <h1 id="OurTeam">Our Team</h1>
+        <img src="src/out_team.png" alt="Work" style="width:100%; margin-left: 4%">
+        <div class="container-fluid">
+            <div class="name1">Shaymuran <br> Alisher</div>
+            <div class="name2">Zhardembek <br> Nurmukhammed</div>
+            <div class="name3">Toktaganov <br> Turlykhan</div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="js/requests.js"></script>
+</body>
+</html>
