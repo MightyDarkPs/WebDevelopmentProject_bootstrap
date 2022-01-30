@@ -1,0 +1,136 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    font-family: 'Secular One', sans-serif;
+    font-size: 25px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #D86161;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    color: #333;
+    background-color: #333;
+}
+
+.main_div{
+    margin-bottom: 20px;
+    margin-top: 100px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.img2 {
+    float: right;
+    margin-right: 160px;
+}
+
+.img3 {
+    margin-top: 50px;
+    float: right;
+    margin-right: 160px;
+}
+
+.img4 {
+    float: right;
+    margin-right: 160px;
+    margin-top: 10px;
+    border: 5px solid #1A1A1A;
+    padding: 5px;
+    background-color: #f9feff
+}
+
+.img5 {
+    float: right;
+    margin-right: 100px;
+}
+
+.About_us_text{
+    text-align: left;
+    margin-left: 100px;
+    padding: 200px;
+    font-family: 'Secular One', sans-serif;
+    font-size: 56px;
+    color: #D86161;
+}
+
+.About_our_work{
+    height: 500px;
+    background-color: rgb(240, 227, 217);
+}
+
+.About_our_work_text{
+    text-align: left;
+    margin-left: 5%;
+    font-family: 'Secular One', sans-serif;
+    font-size: 32px;
+    color: rgb(99, 118, 195);
+}
+
+#OurTeam{
+    padding-top: 50px;
+    text-align: center;
+    font-family: 'Secular One', sans-serif;
+    color: #111111;
+    font-size: 108px;
+}
+
+.Team_members{
+    height: 1900px;
+    margin-bottom: 20px;
+    background-color: lightblue;
+}
+
+#OurContacts{
+    padding-top: 50px;
+    text-align: center;
+    font-family: 'Secular One', sans-serif;
+    color: #111111;
+    font-size: 108px;
+}
+
+.Contacts_text{
+    text-align: center;
+    margin-left: 5%;
+    padding: 10%;
+    font-family: 'Secular One', sans-serif;
+    font-size: 5vh;
+    color: rgb(99, 118, 195);
+}
+
+
+#AreYou{
+    text-align: center;
+    font-family: 'Secular One', sans-serif;
+    font-size: 64px;
+    color: #D86161;
+}
+
+#AreYou2{
+    text-align: center;
+    font-family: 'Secular One', sans-serif;
+    font-size: 56px;
+    color: #D86161;
+}
